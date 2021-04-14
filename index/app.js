@@ -16,9 +16,16 @@ const generateTodoDOM = function () {
   const span = document.createElement('span')
   const checkbox = document.createElement('input')
   const deleteButton = document.createElement('button')
+  const input = document.getElementById('input')
 
   checkbox.type = 'checkbox'
-  span.textContent = 'Unnamed todo'
+
+  if (input.value !== '') {
+    span.textContent = input.value
+  } else {
+    span.textContent = 'Unnamed todo'
+  }
+  
   deleteButton.textContent = 'x'
   div.appendChild(checkbox)
   div.appendChild(span)
