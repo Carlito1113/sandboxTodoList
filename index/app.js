@@ -1,4 +1,9 @@
-const todos = [];
+let todos = [];
+
+todos = JSON.parse(localStorage.getItem('todos'));
+if(todos != null){
+  generateTodoDOM();
+}
 
 const filters = {
   searchText: '',
@@ -6,5 +11,6 @@ const filters = {
 }
 
 document.getElementById('button').addEventListener('click', function(){
-  generateTodoDOM()
+  generateTodoDOM();
+  localStorage.setItem('todos', JSON.stringify(todos));
 });

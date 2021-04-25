@@ -1,5 +1,6 @@
 // Individual Todo DOM creation
 const generateTodoDOM = function () {
+
   const todo = document.createElement('div');
   const span = document.createElement('span')
   const checkbox = document.createElement('input')
@@ -13,15 +14,24 @@ const generateTodoDOM = function () {
     span.textContent = input.value;
     todos.push(span.textContent);
     todo.setAttribute('id', uuidv4());
-    console.log(todos);
-    console.log(todo.getAttribute('id'));
-  } else {
+    // console.log(todo.getAttribute('id'));
+  }
+  else {
     span.textContent = 'Unnamed todo'
   }
+
+  todos.forEach(function(element){
+    span.textContent = element;
+    todo.appendChild(checkbox);
+    todo.appendChild(span);
+    todo.appendChild(deleteButton);
+    document.body.appendChild(todo);
+  })
 
   deleteButton.textContent = 'x'
   todo.className = 'todo'
   span.className = 'span'
+
   todo.appendChild(checkbox);
   todo.appendChild(span);
   todo.appendChild(deleteButton);
@@ -33,6 +43,8 @@ const generateTodoDOM = function () {
     todos.splice(todo.getAttribute('id'), 1);
     console.log(todos);
   }
+
+  input.value = '';
 
   return todo;
 }
